@@ -5,6 +5,8 @@ from django.urls import reverse
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from allauth.account.utils import send_email_confirmation
+from django.contrib.auth import logout
+
 
 # Create your views here.
 def profile(request, username=None):
@@ -72,3 +74,13 @@ def profile_emailverify(request):
 
     return redirect('profile-settings')
       
+
+def profile_delete(request):
+    if request.method == 'POST':
+        user = request.user
+
+        logout(request)
+        user.delete()
+        messages.success(request,'Account Deleted')
+        return redirect('account_login')        
+    return render(request,'profile_delete.html')

@@ -8,5 +8,7 @@ urlpatterns = [
     path('settings',views.profile_settings,name="profile-settings"),
     path('emailchange',views.profile_emailchange,name='profile-emailchange'),
     path('emailverify',views.profile_emailverify,name='profile-emailverify'),
+    path('delete',views.profile_delete,name='profile-delete'),
+
 
 ]
